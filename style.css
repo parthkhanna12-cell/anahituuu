@@ -14,15 +14,11 @@ html{
 }
 
 body{
-
     background:linear-gradient(135deg,#ffd9e8,#ffc7da,#ffb4c8);
-
     min-height:100vh;
-
     overflow-x:hidden;
-
+    overflow-y:auto;
     color:white;
-
 }
 
 /* =========================================
@@ -129,7 +125,11 @@ body{
 
     justify-content:center;
 
-    padding:40px 20px;
+    align-items:flex-start;
+
+    min-height:100vh;
+
+    padding:50px 20px;
 
 }
 
