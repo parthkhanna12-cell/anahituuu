@@ -1,575 +1,206 @@
-/* ==========================
-   Apple Luxury Proposal
-   ========================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
     font-family:'Poppins',sans-serif;
+}
 
-    background:
-    radial-gradient(circle at top,#3d1b5d,#1b0d2b 45%,#090909);
-
-    color:#fff;
-
+html,body{
+    width:100%;
+    height:100%;
     overflow-x:hidden;
-
-    min-height:100vh;
-
+    background:linear-gradient(135deg,#111,#2b0f1f,#4a1736,#111);
+    color:white;
 }
 
-/* ==========================
-   Welcome Screen
-   ========================== */
+/* ---------- Welcome Screen ---------- */
 
-#welcome-screen{
-
+#welcome{
     position:fixed;
-
     inset:0;
-
     display:flex;
-
+    flex-direction:column;
     justify-content:center;
-
     align-items:center;
-
-    background:rgba(5,5,10,.95);
-
-    backdrop-filter:blur(30px);
-
-    z-index:99999;
-
-    transition:1s;
-
-}
-
-.welcome-card{
-
-    width:90%;
-
-    max-width:550px;
-
     text-align:center;
-
-    padding:55px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    backdrop-filter:blur(20px);
-
-    box-shadow:
-    0 0 50px rgba(255,60,120,.18);
-
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(25px);
+    z-index:99999;
+    transition:1s;
 }
 
-.heart-logo{
-
-    font-size:90px;
-
-    animation:heartbeat 2s infinite;
-
+#welcome h1{
+    font-size:80px;
+    margin-bottom:15px;
 }
 
-.welcome-card h1{
-
-    margin-top:20px;
-
-    font-size:48px;
-
-    font-weight:700;
-
+#welcome h2{
+    font-size:42px;
+    margin-bottom:15px;
 }
 
-.welcome-card p{
-
-    margin-top:18px;
-
-    line-height:1.8;
-
-    opacity:.8;
-
-    font-size:18px;
-
+#welcome p{
+    font-size:20px;
+    opacity:.9;
+    margin-bottom:40px;
 }
 
 #beginBtn{
-
-    margin-top:40px;
-
-    padding:18px 48px;
-
+    padding:18px 45px;
     border:none;
-
-    border-radius:60px;
-
-    background:#ff2d70;
-
-    color:white;
-
+    border-radius:50px;
     cursor:pointer;
-
-    font-size:19px;
-
+    font-size:20px;
+    color:white;
+    background:#ff2e63;
+    box-shadow:0 0 30px #ff2e63;
     transition:.35s;
-
-    box-shadow:
-    0 0 35px rgba(255,45,112,.5);
-
 }
 
 #beginBtn:hover{
-
     transform:scale(1.08);
-
 }
 
-/* ==========================
-   Main Layout
-   ========================== */
+/* ---------- Main Content ---------- */
 
-#main{
-
+#mainContent{
+    min-height:100vh;
     display:none;
-
     justify-content:center;
-
-    padding:70px 20px;
-
+    align-items:center;
+    padding:50px 20px;
 }
 
-.glass-card{
-
-    width:92%;
-
-    max-width:980px;
-
-    border-radius:35px;
-
-    padding:45px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    backdrop-filter:blur(25px);
-
-    box-shadow:
-    0 30px 80px rgba(0,0,0,.45);
-
-}
-
-/* ==========================
-   Titles
-   ========================== */
-
-.main-title{
-
+.glass{
+    width:90%;
+    max-width:900px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:30px;
+    padding:40px;
     text-align:center;
-
-    font-size:52px;
-
-    margin-bottom:35px;
-
+    box-shadow:0 15px 60px rgba(0,0,0,.4);
 }
 
-.glass-card h2{
+/* ---------- Gallery ---------- */
 
-    margin-top:30px;
-
-    text-align:center;
-
-    font-weight:400;
-
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin:30px 0;
 }
 
-#typewriter{
-
-    margin-top:30px;
-
-    font-size:20px;
-
-    line-height:2;
-
-    min-height:190px;
-
-    white-space:pre-wrap;
-
-}
-
-/* ==========================
-   Slideshow
-   ========================== */
-
-.slideshow{
-
-    position:relative;
-
+.gallery img{
     width:100%;
-
-    height:520px;
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-}
-
-.slide{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-
-    height:100%;
-
+    height:250px;
     object-fit:cover;
-
-    opacity:0;
-
-    transition:1.2s;
-
+    border-radius:20px;
+    transition:.4s;
+    cursor:pointer;
 }
 
-.slide.active{
-
-    opacity:1;
-
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,80,150,.6);
 }
 
-/* ==========================
-   Proposal Buttons
-   ========================== */
+/* ---------- Love Letter ---------- */
 
-#proposalArea{
-
-    margin-top:50px;
-
-    text-align:center;
-
+#letter{
+    font-size:20px;
+    line-height:1.8;
+    margin:35px 0;
+    min-height:160px;
 }
 
-.proposal{
-
-    font-size:52px;
-
-    margin-bottom:35px;
-
-}
+/* ---------- Buttons ---------- */
 
 .buttons{
-
     display:flex;
-
     justify-content:center;
-
-    gap:25px;
-
+    gap:20px;
+    margin-top:20px;
 }
 
-.buttons button{
-
+button{
+    padding:18px 45px;
     border:none;
-
     border-radius:50px;
-
-    padding:18px 50px;
-
     cursor:pointer;
-
     font-size:20px;
-
+    transition:.3s;
 }
 
 #yesBtn{
-
-    background:#ff2d70;
-
+    background:#ff2e63;
     color:white;
-
-    box-shadow:
-    0 0 30px rgba(255,45,112,.55);
-
     animation:pulse 2s infinite;
-
+    box-shadow:0 0 25px #ff2e63;
 }
 
 #noBtn{
-
     background:white;
-
-    color:#ff2d70;
-
+    color:#ff2e63;
 }
 
-/* ==========================
-   Mobile
-   ========================== */
+@keyframes pulse{
 
-@media(max-width:768px){
-
-.main-title{
-
-font-size:34px;
-
-}
-
-.proposal{
-
-font-size:34px;
-
-}
-
-.slideshow{
-
-height:340px;
-
-}
-
-.buttons{
-
-flex-direction:column;
-
-align-items:center;
-
-}
-
-.welcome-card{
-
-padding:35px;
-
-}
-
-}
-/* =========================================
-   BACKGROUND STARS
-========================================= */
-
-#background-stars{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    z-index:-3;
-}
-
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 3s infinite ease-in-out;
-}
-
-@keyframes twinkle{
-
-0%,100%{
-opacity:.2;
-transform:scale(.5);
+0%{
+transform:scale(1);
+box-shadow:0 0 20px #ff2e63;
 }
 
 50%{
-opacity:1;
-transform:scale(1.6);
-}
-
-}
-
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-#floating-hearts{
-
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-z-index:-2;
-
-}
-
-.heart{
-
-position:absolute;
-bottom:-50px;
-animation:floatHeart linear forwards;
-
-}
-
-@keyframes floatHeart{
-
-0%{
-transform:translateY(0) scale(.6);
-opacity:0;
-}
-
-20%{
-opacity:1;
-}
-
-100%{
-transform:translateY(-120vh) rotate(360deg) scale(1.2);
-opacity:0;
-}
-
-}
-
-/* =========================================
-   CHERRY BLOSSOMS
-========================================= */
-
-#floating-petals{
-
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-z-index:-1;
-
-}
-
-.petal{
-
-position:absolute;
-top:-60px;
-animation:petalFall linear forwards;
-
-}
-
-@keyframes petalFall{
-
-0%{
-
-transform:translateY(-60px) rotate(0deg);
-
-}
-
-100%{
-
-transform:translateY(120vh) translateX(120px) rotate(720deg);
-
-opacity:0;
-
-}
-
-}
-
-/* =========================================
-   CURSOR HEART
-========================================= */
-
-.cursorHeart{
-
-position:fixed;
-
-pointer-events:none;
-
-font-size:18px;
-
-animation:cursorFade .8s linear forwards;
-
-z-index:999999;
-
-}
-
-@keyframes cursorFade{
-
-0%{
-
-opacity:1;
-transform:translate(-50%,-50%) scale(1);
-
-}
-
-100%{
-
-opacity:0;
-transform:translate(-50%,-90%) scale(.2);
-
-}
-
-}
-
-/* =========================================
-   GLASS HOVER
-========================================= */
-
-.glass-card{
-
-transition:.45s;
-
-}
-
-.glass-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-
-0 40px 90px rgba(255,80,150,.18);
-
-}
-
-/* =========================================
-   BUTTON EFFECTS
-========================================= */
-
-#yesBtn:hover{
-
 transform:scale(1.08);
+box-shadow:0 0 45px #ff2e63;
+}
 
-box-shadow:
-
-0 0 45px rgba(255,50,130,.8);
+100%{
+transform:scale(1);
+box-shadow:0 0 20px #ff2e63;
+}
 
 }
 
-#noBtn:hover{
+/* ---------- Celebration ---------- */
 
-background:#ffe7ef;
-
+#celebrate{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:rgba(0,0,0,.92);
+    backdrop-filter:blur(18px);
+    z-index:999999;
 }
 
-/* =========================================
-   FADE ANIMATION
-========================================= */
-
-.fadeIn{
-
-animation:fadeIn 1s ease forwards;
-
+#celebrate h1{
+    font-size:70px;
 }
 
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-transform:translateY(30px);
-
+#celebrate h2{
+    margin:25px 0;
 }
 
-to{
+/* ---------- Mobile ---------- */
 
-opacity:1;
-transform:translateY(0);
+@media(max-width:768px){
 
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery img{
+height:300px;
+}
+
+#welcome h2{
+font-size:30px;
 }
 
 }
