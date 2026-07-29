@@ -4,16 +4,14 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For Anahituuu ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -21,46 +19,38 @@
 
 <body>
 
-<!-- Welcome Screen -->
+<!-- Loading Screen -->
 
-<div id="welcome">
+<div id="loader">
 
-<h1>❤️</h1>
+<div class="loader-heart">
+❤️
+</div>
 
-<h2>Hi Anahituuu</h2>
+<h1>Hi Anahituuu</h1>
 
-<p>
-
-I made something special just for you...
-
-</p>
+<p>I made something special just for you...</p>
 
 <button id="beginBtn">
-
-✨ Click To Begin ✨
-
+✨ Begin ✨
 </button>
 
 </div>
 
-<!-- Floating Hearts -->
+<!-- Background Effects -->
 
-<div class="hearts"></div>
+<div id="stars"></div>
+<div id="petals"></div>
+<div id="hearts"></div>
 
-<!-- Cherry Blossoms -->
+<!-- Main Content -->
 
-<div class="petals"></div>
+<main id="main">
 
-<!-- Main Website -->
+<section class="hero glass">
 
-<div id="mainContent">
-
-<div class="glass">
-
-<h1>
-
-Will You Be Mine? ❤️
-
+<h1 id="title">
+For Someone Very Special ❤️
 </h1>
 
 <div class="gallery">
@@ -79,13 +69,21 @@ Will You Be Mine? ❤️
 
 </div>
 
-<h2>
+<h2 id="subtitle">
 
-Every moment with you feels like my favourite memory.
+Every memory with you means more than you know.
 
 </h2>
 
-<p id="letter"></p>
+<p id="typewriter"></p>
+
+<div id="proposal" class="hidden">
+
+<h1 class="proposalText">
+
+Will You Be Mine? ❤️
+
+</h1>
 
 <div class="buttons">
 
@@ -105,11 +103,15 @@ NO 🙈
 
 </div>
 
-</div>
+</section>
+
+</main>
 
 <!-- Celebration -->
 
-<div id="celebrate">
+<div id="celebration">
+
+<div class="celebration-card">
 
 <h1>
 
@@ -129,13 +131,35 @@ You just made me the happiest person alive.
 
 </h2>
 
+<p>
+
+Thank you for giving us a chance to create countless beautiful memories together.
+
+</p>
+
 <h3>
 
-Love,
+Love,<br>
 
 Paru ❤️
 
 </h3>
+
+</div>
+
+</div>
+
+<!-- Full Screen Image Viewer -->
+
+<div id="lightbox">
+
+<span id="closeLightbox">
+
+✕
+
+</span>
+
+<img id="lightboxImage">
 
 </div>
 
