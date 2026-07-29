@@ -2,74 +2,74 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anahituuu ❤️</title>
 
-<title>For Anahituuu ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Loading Screen -->
+<!-- ========= WELCOME SCREEN ========= -->
 
-<div id="loader">
+<div id="welcome-screen">
 
-<div class="loader-heart">
-❤️
+    <div class="welcome-card">
+
+        <div class="heart-logo">❤️</div>
+
+        <h1>For Anahituuu</h1>
+
+        <p>
+            I built something special just for you.<br>
+            I hope it makes you smile.
+        </p>
+
+        <button id="beginBtn">
+            ✨ Begin ✨
+        </button>
+
+    </div>
+
 </div>
 
-<h1>Hi Anahituuu</h1>
+<!-- ========= BACKGROUND EFFECTS ========= -->
 
-<p>I made something special just for you...</p>
+<div id="background-stars"></div>
+<div id="floating-hearts"></div>
+<div id="floating-petals"></div>
 
-<button id="beginBtn">
-✨ Begin ✨
-</button>
-
-</div>
-
-<!-- Background Effects -->
-
-<div id="stars"></div>
-<div id="petals"></div>
-<div id="hearts"></div>
-
-<!-- Main Content -->
+<!-- ========= MAIN ========= -->
 
 <main id="main">
 
-<section class="hero glass">
+<section class="glass-card">
 
-<h1 id="title">
-For Someone Very Special ❤️
+<h1 class="main-title">
+
+Someone Very Special ❤️
+
 </h1>
 
-<div class="gallery">
+<div class="slideshow">
 
-<img src="IMG_2330.jpg">
-
-<img src="IMG_2331.jpg">
-
-<img src="IMG_2332.PNG">
-
-<img src="IMG_2333.PNG">
-
-<img src="IMG_2334.PNG">
-
-<img src="IMG_2335.PNG">
+<img src="IMG_2330.jpg" class="slide active">
+<img src="IMG_2331.jpg" class="slide">
+<img src="IMG_2332.PNG" class="slide">
+<img src="IMG_2333.PNG" class="slide">
+<img src="IMG_2334.PNG" class="slide">
+<img src="IMG_2335.PNG" class="slide">
 
 </div>
 
-<h2 id="subtitle">
+<h2>
 
 Every memory with you means more than you know.
 
@@ -77,9 +77,9 @@ Every memory with you means more than you know.
 
 <p id="typewriter"></p>
 
-<div id="proposal" class="hidden">
+<div id="proposalArea">
 
-<h1 class="proposalText">
+<h1 class="proposal">
 
 Will You Be Mine? ❤️
 
@@ -107,35 +107,37 @@ NO 🙈
 
 </main>
 
-<!-- Celebration -->
+<!-- ========= LIGHTBOX ========= -->
+
+<div id="lightbox">
+
+<span id="closeLightbox">×</span>
+
+<img id="lightboxImage">
+
+</div>
+
+<!-- ========= CELEBRATION ========= -->
 
 <div id="celebration">
 
-<div class="celebration-card">
+<div class="celebration-box">
 
-<h1>
+<h1>💍</h1>
 
-💍
-
-</h1>
-
-<h1>
-
-She Said YES ❤️
-
-</h1>
-
-<h2>
-
-You just made me the happiest person alive.
-
-</h2>
+<h1>She Said YES ❤️</h1>
 
 <p>
 
-Thank you for giving us a chance to create countless beautiful memories together.
+Every great story starts with a single "Yes."
 
 </p>
+
+<h2>
+
+Thank you for giving us a chance to write ours.
+
+</h2>
 
 <h3>
 
@@ -149,24 +151,9 @@ Paru ❤️
 
 </div>
 
-<!-- Full Screen Image Viewer -->
-
-<div id="lightbox">
-
-<span id="closeLightbox">
-
-✕
-
-</span>
-
-<img id="lightboxImage">
-
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
