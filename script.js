@@ -1,168 +1,173 @@
 // ===============================
-// APPLE LUXURY PROPOSAL
+// Welcome Screen
 // ===============================
 
-const loader = document.getElementById("welcome-screen");
 const beginBtn = document.getElementById("beginBtn");
-const main = document.getElementById("main");
+const welcome = document.getElementById("welcome");
+const mainContent = document.getElementById("mainContent");
 
-const typewriter = document.getElementById("typewriter");
-const proposalArea = document.getElementById("proposalArea");
+beginBtn.onclick = () => {
 
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
+    welcome.style.opacity = "0";
 
-const celebration = document.getElementById("celebration");
+    setTimeout(() => {
 
-const slides = document.querySelectorAll(".slide");
+        welcome.style.display = "none";
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImage");
-const closeLightbox = document.getElementById("closeLightbox");
-
-proposalArea.style.display="none";
-
-// ======================================
-// BEGIN BUTTON
-// ======================================
-
-beginBtn.onclick = () =>{
-
-    loader.style.opacity="0";
-
-    setTimeout(()=>{
-
-        loader.style.display="none";
-
-        main.style.display="flex";
-
-        main.classList.add("fadeIn");
+        mainContent.style.display = "flex";
 
         startTyping();
 
-        startSlideshow();
+        createPetals();
 
-        createStars();
+        createHearts();
 
-        floatingHearts();
-
-        floatingPetals();
-
-    },900);
+    },800);
 
 };
 
-// ======================================
-// TYPEWRITER
-// ======================================
 
-const message=`From the first time we talked,
+// ===============================
+// Typewriter
+// ===============================
 
+const letter = `From the very first moment we started talking,
 I never imagined someone could become this special to me.
 
-Every laugh,
-every smile,
-every little moment we shared...
-
-has slowly become one of my favourite memories.
-
-You make ordinary days feel extraordinary.
+Your smile makes my day brighter,
+your laugh makes everything better,
+and every memory with you is something I truly treasure.
 
 No matter where life takes us,
+I hope I get to create thousands of memories with you.
 
-I hope we keep creating beautiful memories together.
+So today...
 
-So...
+I just want to ask one simple question... ❤️`;
 
-there's just one question I've wanted to ask... ❤️`;
+const letterBox = document.getElementById("letter");
 
-let i=0;
+let index = 0;
 
 function startTyping(){
 
-function type(){
+    function type(){
 
-if(i<message.length){
+        if(index < letter.length){
 
-typewriter.innerHTML+=message.charAt(i);
+            letterBox.innerHTML += letter.charAt(index);
 
-i++;
+            index++;
 
-setTimeout(type,32);
+            setTimeout(type,35);
 
-}else{
+        }
 
-proposalArea.style.display="block";
+    }
 
-proposalArea.classList.add("fadeIn");
-
-}
+    type();
 
 }
 
-type();
 
-}
+// ===============================
+// Floating Hearts
+// ===============================
 
-// ======================================
-// SLIDESHOW
-// ======================================
-
-let current=0;
-
-function startSlideshow(){
+function createHearts(){
 
 setInterval(()=>{
 
-slides[current].classList.remove("active");
+const heart=document.createElement("div");
 
-current++;
+heart.innerHTML="❤️";
 
-if(current>=slides.length){
+heart.className="floatingHeart";
 
-current=0;
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),10000);
+
+},400);
+
+}
+
+
+// ===============================
+// Cherry Blossoms
+// ===============================
+
+function createPetals(){
+
+setInterval(()=>{
+
+const petal=document.createElement("div");
+
+petal.innerHTML="🌸";
+
+petal.className="petal";
+
+petal.style.left=Math.random()*100+"vw";
+
+petal.style.animationDuration=(6+Math.random()*5)+"s";
+
+petal.style.fontSize=(20+Math.random()*15)+"px";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),12000);
+
+},500);
 
 }
 
-slides[current].classList.add("active");
 
-},3500);
+// ===============================
+// Heart Cursor
+// ===============================
 
-}
+document.addEventListener("mousemove",e=>{
 
-// ======================================
-// LIGHTBOX
-// ======================================
+const heart=document.createElement("div");
 
-slides.forEach(img=>{
+heart.innerHTML="💖";
 
-img.onclick=()=>{
+heart.className="cursorHeart";
 
-lightbox.style.display="flex";
+heart.style.left=e.pageX+"px";
 
-lightboxImg.src=img.src;
+heart.style.top=e.pageY+"px";
 
-}
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),900);
 
 });
 
-closeLightbox.onclick=()=>{
 
-lightbox.style.display="none";
+// ===============================
+// YES / NO
+// ===============================
 
-};
+const yesBtn=document.getElementById("yesBtn");
 
-// ======================================
-// NO BUTTON
-// ======================================
+const noBtn=document.getElementById("noBtn");
 
-let scale=1;
+const celebrate=document.getElementById("celebrate");
+
+let grow=1;
 
 function moveNo(){
 
-const x=Math.random()*(window.innerWidth-180);
+const x=Math.random()*(window.innerWidth-150);
 
-const y=Math.random()*(window.innerHeight-100);
+const y=Math.random()*(window.innerHeight-80);
 
 noBtn.style.position="fixed";
 
@@ -170,197 +175,105 @@ noBtn.style.left=x+"px";
 
 noBtn.style.top=y+"px";
 
-scale+=0.08;
+grow+=0.12;
 
-yesBtn.style.transform=`scale(${scale})`;
+yesBtn.style.transform=`scale(${grow})`;
 
 }
 
-noBtn.addEventListener("mouseenter",moveNo);
+noBtn.addEventListener("mouseover",moveNo);
 
 noBtn.addEventListener("click",moveNo);
-// ======================================
-// STARS
-// ======================================
 
-function createStars(){
 
-    const stars=document.getElementById("background-stars");
+// ===============================
+// Celebration
+// ===============================
 
-    for(let i=0;i<120;i++){
+yesBtn.onclick=()=>{
 
-        const star=document.createElement("div");
+celebrate.style.display="flex";
 
-        star.className="star";
+fireworks();
 
-        star.style.left=Math.random()*100+"vw";
-        star.style.top=Math.random()*100+"vh";
+heartRain();
 
-        star.style.animationDelay=Math.random()*3+"s";
+};
 
-        stars.appendChild(star);
 
-    }
+// ===============================
+// Fireworks
+// ===============================
 
-}
+function fireworks(){
 
-// ======================================
-// FLOATING HEARTS
-// ======================================
+const end=Date.now()+4000;
 
-function floatingHearts(){
+(function frame(){
 
-    setInterval(()=>{
+confetti({
 
-        const heart=document.createElement("div");
+particleCount:8,
 
-        heart.className="heart";
+spread:90,
 
-        heart.innerHTML="❤️";
-
-        heart.style.left=Math.random()*100+"vw";
-
-        heart.style.fontSize=(18+Math.random()*20)+"px";
-
-        heart.style.animationDuration=(6+Math.random()*5)+"s";
-
-        document.getElementById("floating-hearts").appendChild(heart);
-
-        setTimeout(()=>heart.remove(),12000);
-
-    },600);
-
-}
-
-// ======================================
-// PETALS
-// ======================================
-
-function floatingPetals(){
-
-    setInterval(()=>{
-
-        const petal=document.createElement("div");
-
-        petal.className="petal";
-
-        petal.innerHTML="🌸";
-
-        petal.style.left=Math.random()*100+"vw";
-
-        petal.style.fontSize=(18+Math.random()*18)+"px";
-
-        petal.style.animationDuration=(7+Math.random()*5)+"s";
-
-        document.getElementById("floating-petals").appendChild(petal);
-
-        setTimeout(()=>petal.remove(),14000);
-
-    },700);
-
-}
-
-// ======================================
-// HEART CURSOR
-// ======================================
-
-document.addEventListener("mousemove",(e)=>{
-
-    const heart=document.createElement("div");
-
-    heart.className="cursorHeart";
-
-    heart.innerHTML="💖";
-
-    heart.style.left=e.clientX+"px";
-    heart.style.top=e.clientY+"px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>heart.remove(),800);
+origin:{x:0}
 
 });
 
-// ======================================
-// YES BUTTON
-// ======================================
+confetti({
 
-yesBtn.addEventListener("click",()=>{
+particleCount:8,
 
-    celebration.style.display="flex";
+spread:90,
 
-    launchFireworks();
-
-    heartRain();
+origin:{x:1}
 
 });
 
-// ======================================
-// FIREWORKS
-// ======================================
+confetti({
 
-function launchFireworks(){
+particleCount:12,
 
-    const duration=5000;
-    const end=Date.now()+duration;
+spread:360
 
-    (function frame(){
+});
 
-        confetti({
-            particleCount:6,
-            spread:80,
-            origin:{x:0}
-        });
+if(Date.now()<end){
 
-        confetti({
-            particleCount:6,
-            spread:80,
-            origin:{x:1}
-        });
-
-        confetti({
-            particleCount:12,
-            spread:360,
-            origin:{
-                x:Math.random(),
-                y:Math.random()*0.6
-            }
-        });
-
-        if(Date.now()<end){
-
-            requestAnimationFrame(frame);
-
-        }
-
-    })();
+requestAnimationFrame(frame);
 
 }
 
-// ======================================
-// HEART RAIN
-// ======================================
+})();
+
+}
+
+
+// ===============================
+// Heart Rain
+// ===============================
 
 function heartRain(){
 
-    for(let i=0;i<180;i++){
+for(let i=0;i<140;i++){
 
-        const heart=document.createElement("div");
+const heart=document.createElement("div");
 
-        heart.className="heart";
+heart.innerHTML="❤️";
 
-        heart.innerHTML="❤️";
+heart.className="heartRain";
 
-        heart.style.left=Math.random()*100+"vw";
+heart.style.left=Math.random()*100+"vw";
 
-        heart.style.fontSize=(18+Math.random()*24)+"px";
+heart.style.fontSize=(15+Math.random()*25)+"px";
 
-        heart.style.animationDuration=(3+Math.random()*3)+"s";
+heart.style.animationDuration=(3+Math.random()*4)+"s";
 
-        document.body.appendChild(heart);
+document.body.appendChild(heart);
 
-        setTimeout(()=>heart.remove(),7000);
+setTimeout(()=>heart.remove(),7000);
 
-    }
+}
 
 }
