@@ -356,3 +356,220 @@ padding:35px;
 }
 
 }
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+#background-stars{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-3;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+
+0%,100%{
+opacity:.2;
+transform:scale(.5);
+}
+
+50%{
+opacity:1;
+transform:scale(1.6);
+}
+
+}
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+#floating-hearts{
+
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:-2;
+
+}
+
+.heart{
+
+position:absolute;
+bottom:-50px;
+animation:floatHeart linear forwards;
+
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) scale(.6);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg) scale(1.2);
+opacity:0;
+}
+
+}
+
+/* =========================================
+   CHERRY BLOSSOMS
+========================================= */
+
+#floating-petals{
+
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:-1;
+
+}
+
+.petal{
+
+position:absolute;
+top:-60px;
+animation:petalFall linear forwards;
+
+}
+
+@keyframes petalFall{
+
+0%{
+
+transform:translateY(-60px) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateY(120vh) translateX(120px) rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+
+/* =========================================
+   CURSOR HEART
+========================================= */
+
+.cursorHeart{
+
+position:fixed;
+
+pointer-events:none;
+
+font-size:18px;
+
+animation:cursorFade .8s linear forwards;
+
+z-index:999999;
+
+}
+
+@keyframes cursorFade{
+
+0%{
+
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+
+}
+
+100%{
+
+opacity:0;
+transform:translate(-50%,-90%) scale(.2);
+
+}
+
+}
+
+/* =========================================
+   GLASS HOVER
+========================================= */
+
+.glass-card{
+
+transition:.45s;
+
+}
+
+.glass-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+
+0 40px 90px rgba(255,80,150,.18);
+
+}
+
+/* =========================================
+   BUTTON EFFECTS
+========================================= */
+
+#yesBtn:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+
+0 0 45px rgba(255,50,130,.8);
+
+}
+
+#noBtn:hover{
+
+background:#ffe7ef;
+
+}
+
+/* =========================================
+   FADE ANIMATION
+========================================= */
+
+.fadeIn{
+
+animation:fadeIn 1s ease forwards;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
