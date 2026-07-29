@@ -182,3 +182,88 @@ button{
         opacity:0;
     }
 }
+/* 🌸 Cherry Blossom Petals */
+
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.petals span{
+    position:absolute;
+    top:-10%;
+    font-size:28px;
+    opacity:0.85;
+    animation:petalFall linear infinite;
+}
+
+.petals span:nth-child(1){left:5%;animation-duration:12s;animation-delay:0s;}
+.petals span:nth-child(2){left:15%;animation-duration:15s;animation-delay:2s;}
+.petals span:nth-child(3){left:28%;animation-duration:13s;animation-delay:4s;}
+.petals span:nth-child(4){left:40%;animation-duration:18s;animation-delay:1s;}
+.petals span:nth-child(5){left:52%;animation-duration:14s;animation-delay:3s;}
+.petals span:nth-child(6){left:65%;animation-duration:17s;animation-delay:6s;}
+.petals span:nth-child(7){left:75%;animation-duration:12s;animation-delay:5s;}
+.petals span:nth-child(8){left:85%;animation-duration:16s;animation-delay:2s;}
+.petals span:nth-child(9){left:92%;animation-duration:13s;animation-delay:4s;}
+.petals span:nth-child(10){left:98%;animation-duration:18s;animation-delay:0s;}
+
+@keyframes petalFall{
+
+    0%{
+        transform:translateY(-10vh) translateX(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(50vh) translateX(-40px) rotate(180deg);
+    }
+
+    100%{
+        transform:translateY(110vh) translateX(60px) rotate(360deg);
+        opacity:0;
+    }
+
+}
+/* ❤️ Heart Rain */
+
+.heartRain{
+
+    position:fixed;
+
+    top:-50px;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    animation:heartFall linear forwards;
+
+}
+
+@keyframes heartFall{
+
+    0%{
+
+        transform:translateY(-50px) rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(110vh) rotate(720deg);
+
+        opacity:0;
+
+    }
+
+}
