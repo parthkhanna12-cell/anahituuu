@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Story ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(135deg,#ffdbe7,#ffc7da,#ffb6c1);
+
+position:relative;
+
+}
+
+/* Background Hearts */
+
+.heart{
+
+position:absolute;
+bottom:-40px;
+font-size:22px;
+animation:float 8s linear infinite;
+opacity:.8;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0) rotate(0deg);
+opacity:0;
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+
+}
+
+}
+
+/* Glass Card */
+
+.card{
+
+width:90%;
+max-width:750px;
+
+background:rgba(255,255,255,.22);
+
+backdrop-filter:blur(15px);
+
+padding:50px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+animation:fadeUp 1.2s;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+img{
+
+width:220px;
+height:220px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid white;
+
+margin-bottom:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+h1{
+
+font-size:46px;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+p{
+
+font-size:20px;
+
+line-height:2;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+.signature{
+
+font-size:28px;
+
+font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="IMG_2330.jpg">
+
+<h1>❤️ Thank You ❤️</h1>
+
+<p>
+
+If you're reading this...
+
+thank you for making me the happiest person alive.
+
+I know this is just a little website,
+
+but every word on it comes straight from my heart.
+
+I don't know what the future holds,
+
+but I'd love to discover it with you.
+
+Thank you for saying <b>YES.</b>
+
+</p>
+
+<p class="signature">
+
+Love,<br>
+
+Paru ❤️
+
+</p>
+
+</div>
+
+<script>
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*22)+"px";
+
+heart.style.animationDuration=(6+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),10000);
+
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+
+</html>
