@@ -1,173 +1,168 @@
 // ===============================
-// Welcome Screen
+// APPLE LUXURY PROPOSAL
 // ===============================
 
+const loader = document.getElementById("welcome-screen");
 const beginBtn = document.getElementById("beginBtn");
-const welcome = document.getElementById("welcome");
-const mainContent = document.getElementById("mainContent");
+const main = document.getElementById("main");
 
-beginBtn.onclick = () => {
+const typewriter = document.getElementById("typewriter");
+const proposalArea = document.getElementById("proposalArea");
 
-    welcome.style.opacity = "0";
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-    setTimeout(() => {
+const celebration = document.getElementById("celebration");
 
-        welcome.style.display = "none";
+const slides = document.querySelectorAll(".slide");
 
-        mainContent.style.display = "flex";
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImage");
+const closeLightbox = document.getElementById("closeLightbox");
+
+proposalArea.style.display="none";
+
+// ======================================
+// BEGIN BUTTON
+// ======================================
+
+beginBtn.onclick = () =>{
+
+    loader.style.opacity="0";
+
+    setTimeout(()=>{
+
+        loader.style.display="none";
+
+        main.style.display="flex";
+
+        main.classList.add("fadeIn");
 
         startTyping();
 
-        createPetals();
+        startSlideshow();
 
-        createHearts();
+        createStars();
 
-    },800);
+        floatingHearts();
+
+        floatingPetals();
+
+    },900);
 
 };
 
+// ======================================
+// TYPEWRITER
+// ======================================
 
-// ===============================
-// Typewriter
-// ===============================
+const message=`From the first time we talked,
 
-const letter = `From the very first moment we started talking,
 I never imagined someone could become this special to me.
 
-Your smile makes my day brighter,
-your laugh makes everything better,
-and every memory with you is something I truly treasure.
+Every laugh,
+every smile,
+every little moment we shared...
+
+has slowly become one of my favourite memories.
+
+You make ordinary days feel extraordinary.
 
 No matter where life takes us,
-I hope I get to create thousands of memories with you.
 
-So today...
+I hope we keep creating beautiful memories together.
 
-I just want to ask one simple question... ❤️`;
+So...
 
-const letterBox = document.getElementById("letter");
+there's just one question I've wanted to ask... ❤️`;
 
-let index = 0;
+let i=0;
 
 function startTyping(){
 
-    function type(){
+function type(){
 
-        if(index < letter.length){
+if(i<message.length){
 
-            letterBox.innerHTML += letter.charAt(index);
+typewriter.innerHTML+=message.charAt(i);
 
-            index++;
+i++;
 
-            setTimeout(type,35);
+setTimeout(type,32);
 
-        }
+}else{
 
-    }
+proposalArea.style.display="block";
 
-    type();
+proposalArea.classList.add("fadeIn");
 
 }
 
+}
 
-// ===============================
-// Floating Hearts
-// ===============================
+type();
 
-function createHearts(){
+}
+
+// ======================================
+// SLIDESHOW
+// ======================================
+
+let current=0;
+
+function startSlideshow(){
 
 setInterval(()=>{
 
-const heart=document.createElement("div");
+slides[current].classList.remove("active");
 
-heart.innerHTML="❤️";
+current++;
 
-heart.className="floatingHeart";
+if(current>=slides.length){
 
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(15+Math.random()*25)+"px";
-
-heart.style.animationDuration=(5+Math.random()*5)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),10000);
-
-},400);
+current=0;
 
 }
 
+slides[current].classList.add("active");
 
-// ===============================
-// Cherry Blossoms
-// ===============================
-
-function createPetals(){
-
-setInterval(()=>{
-
-const petal=document.createElement("div");
-
-petal.innerHTML="🌸";
-
-petal.className="petal";
-
-petal.style.left=Math.random()*100+"vw";
-
-petal.style.animationDuration=(6+Math.random()*5)+"s";
-
-petal.style.fontSize=(20+Math.random()*15)+"px";
-
-document.body.appendChild(petal);
-
-setTimeout(()=>petal.remove(),12000);
-
-},500);
+},3500);
 
 }
 
+// ======================================
+// LIGHTBOX
+// ======================================
 
-// ===============================
-// Heart Cursor
-// ===============================
+slides.forEach(img=>{
 
-document.addEventListener("mousemove",e=>{
+img.onclick=()=>{
 
-const heart=document.createElement("div");
+lightbox.style.display="flex";
 
-heart.innerHTML="💖";
+lightboxImg.src=img.src;
 
-heart.className="cursorHeart";
-
-heart.style.left=e.pageX+"px";
-
-heart.style.top=e.pageY+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),900);
+}
 
 });
 
+closeLightbox.onclick=()=>{
 
-// ===============================
-// YES / NO
-// ===============================
+lightbox.style.display="none";
 
-const yesBtn=document.getElementById("yesBtn");
+};
 
-const noBtn=document.getElementById("noBtn");
+// ======================================
+// NO BUTTON
+// ======================================
 
-const celebrate=document.getElementById("celebrate");
-
-let grow=1;
+let scale=1;
 
 function moveNo(){
 
-const x=Math.random()*(window.innerWidth-150);
+const x=Math.random()*(window.innerWidth-180);
 
-const y=Math.random()*(window.innerHeight-80);
+const y=Math.random()*(window.innerHeight-100);
 
 noBtn.style.position="fixed";
 
@@ -175,105 +170,12 @@ noBtn.style.left=x+"px";
 
 noBtn.style.top=y+"px";
 
-grow+=0.12;
+scale+=0.08;
 
-yesBtn.style.transform=`scale(${grow})`;
+yesBtn.style.transform=`scale(${scale})`;
 
 }
 
-noBtn.addEventListener("mouseover",moveNo);
+noBtn.addEventListener("mouseenter",moveNo);
 
 noBtn.addEventListener("click",moveNo);
-
-
-// ===============================
-// Celebration
-// ===============================
-
-yesBtn.onclick=()=>{
-
-celebrate.style.display="flex";
-
-fireworks();
-
-heartRain();
-
-};
-
-
-// ===============================
-// Fireworks
-// ===============================
-
-function fireworks(){
-
-const end=Date.now()+4000;
-
-(function frame(){
-
-confetti({
-
-particleCount:8,
-
-spread:90,
-
-origin:{x:0}
-
-});
-
-confetti({
-
-particleCount:8,
-
-spread:90,
-
-origin:{x:1}
-
-});
-
-confetti({
-
-particleCount:12,
-
-spread:360
-
-});
-
-if(Date.now()<end){
-
-requestAnimationFrame(frame);
-
-}
-
-})();
-
-}
-
-
-// ===============================
-// Heart Rain
-// ===============================
-
-function heartRain(){
-
-for(let i=0;i<140;i++){
-
-const heart=document.createElement("div");
-
-heart.innerHTML="❤️";
-
-heart.className="heartRain";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(15+Math.random()*25)+"px";
-
-heart.style.animationDuration=(3+Math.random()*4)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),7000);
-
-}
-
-}
