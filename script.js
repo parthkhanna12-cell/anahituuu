@@ -179,3 +179,188 @@ yesBtn.style.transform=`scale(${scale})`;
 noBtn.addEventListener("mouseenter",moveNo);
 
 noBtn.addEventListener("click",moveNo);
+// ======================================
+// STARS
+// ======================================
+
+function createStars(){
+
+    const stars=document.getElementById("background-stars");
+
+    for(let i=0;i<120;i++){
+
+        const star=document.createElement("div");
+
+        star.className="star";
+
+        star.style.left=Math.random()*100+"vw";
+        star.style.top=Math.random()*100+"vh";
+
+        star.style.animationDelay=Math.random()*3+"s";
+
+        stars.appendChild(star);
+
+    }
+
+}
+
+// ======================================
+// FLOATING HEARTS
+// ======================================
+
+function floatingHearts(){
+
+    setInterval(()=>{
+
+        const heart=document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML="❤️";
+
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.fontSize=(18+Math.random()*20)+"px";
+
+        heart.style.animationDuration=(6+Math.random()*5)+"s";
+
+        document.getElementById("floating-hearts").appendChild(heart);
+
+        setTimeout(()=>heart.remove(),12000);
+
+    },600);
+
+}
+
+// ======================================
+// PETALS
+// ======================================
+
+function floatingPetals(){
+
+    setInterval(()=>{
+
+        const petal=document.createElement("div");
+
+        petal.className="petal";
+
+        petal.innerHTML="🌸";
+
+        petal.style.left=Math.random()*100+"vw";
+
+        petal.style.fontSize=(18+Math.random()*18)+"px";
+
+        petal.style.animationDuration=(7+Math.random()*5)+"s";
+
+        document.getElementById("floating-petals").appendChild(petal);
+
+        setTimeout(()=>petal.remove(),14000);
+
+    },700);
+
+}
+
+// ======================================
+// HEART CURSOR
+// ======================================
+
+document.addEventListener("mousemove",(e)=>{
+
+    const heart=document.createElement("div");
+
+    heart.className="cursorHeart";
+
+    heart.innerHTML="💖";
+
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),800);
+
+});
+
+// ======================================
+// YES BUTTON
+// ======================================
+
+yesBtn.addEventListener("click",()=>{
+
+    celebration.style.display="flex";
+
+    launchFireworks();
+
+    heartRain();
+
+});
+
+// ======================================
+// FIREWORKS
+// ======================================
+
+function launchFireworks(){
+
+    const duration=5000;
+    const end=Date.now()+duration;
+
+    (function frame(){
+
+        confetti({
+            particleCount:6,
+            spread:80,
+            origin:{x:0}
+        });
+
+        confetti({
+            particleCount:6,
+            spread:80,
+            origin:{x:1}
+        });
+
+        confetti({
+            particleCount:12,
+            spread:360,
+            origin:{
+                x:Math.random(),
+                y:Math.random()*0.6
+            }
+        });
+
+        if(Date.now()<end){
+
+            requestAnimationFrame(frame);
+
+        }
+
+    })();
+
+}
+
+// ======================================
+// HEART RAIN
+// ======================================
+
+function heartRain(){
+
+    for(let i=0;i<180;i++){
+
+        const heart=document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML="❤️";
+
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.fontSize=(18+Math.random()*24)+"px";
+
+        heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),7000);
+
+    }
+
+}
