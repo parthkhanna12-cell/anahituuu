@@ -1,363 +1,222 @@
-/* =======================================
-   RESET
-======================================= */
+// =====================================
+// Elements
+// =====================================
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+const welcome = document.getElementById("welcome");
+const beginBtn = document.getElementById("beginBtn");
+const main = document.getElementById("main");
 
-body{
+const letter = document.getElementById("letter");
 
-    background:linear-gradient(135deg,#ffdbe7,#ffc7da,#ffb6c1);
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-    overflow-x:hidden;
+// Hide proposal until letter finishes
+document.querySelector(".proposal").style.display = "none";
 
-    color:white;
+// =====================================
+// Begin Button
+// =====================================
 
-}
+beginBtn.addEventListener("click", () => {
 
-/* =======================================
-   WELCOME
-======================================= */
+    welcome.style.opacity = "0";
 
-#welcome{
+    setTimeout(() => {
 
-    position:fixed;
+        welcome.style.display = "none";
 
-    inset:0;
+        main.style.display = "flex";
 
-    background:rgba(255,192,203,.95);
+        typeLetter();
 
-    display:flex;
+        startHearts();
 
-    justify-content:center;
+        startPetals();
 
-    align-items:center;
+    }, 700);
 
-    z-index:99999;
+});
 
-    transition:1s;
+// =====================================
+// Typewriter Letter
+// =====================================
 
-}
+const message = `From the moment we started talking,
 
-.welcome-card{
+I never imagined someone could become this special to me.
 
-    width:90%;
+Every smile,
+every laugh,
+and every little memory we've shared
+has become something I truly cherish.
 
-    max-width:500px;
+Thank you for being such an amazing person.
 
-    text-align:center;
+No matter where life takes us,
+I hope we keep making beautiful memories together.
 
-    background:rgba(255,255,255,.18);
+So today...
 
-    backdrop-filter:blur(15px);
+there's just one question I'd love to ask... ❤️`;
 
-    padding:45px;
+let i = 0;
 
-    border-radius:25px;
+function typeLetter(){
 
-    box-shadow:0 10px 40px rgba(0,0,0,.15);
+    if(i < message.length){
 
-}
+        letter.innerHTML += message.charAt(i);
 
-.welcome-card h1{
+        i++;
 
-    font-size:70px;
+        setTimeout(typeLetter,30);
 
-}
+    }else{
 
-.welcome-card h2{
+        document.querySelector(".proposal").style.display="block";
 
-    margin:15px 0;
-
-    font-size:38px;
-
-}
-
-.welcome-card p{
-
-    line-height:1.8;
-
-    margin-bottom:30px;
+    }
 
 }
 
-#beginBtn{
+// =====================================
+// Floating Hearts
+// =====================================
 
-    border:none;
+function startHearts(){
 
-    padding:16px 40px;
+    setInterval(()=>{
 
-    border-radius:40px;
+        const heart=document.createElement("div");
 
-    background:#ff2e63;
+        heart.innerHTML="❤️";
 
-    color:white;
+        heart.style.position="fixed";
 
-    cursor:pointer;
+        heart.style.left=Math.random()*100+"vw";
 
-    font-size:18px;
+        heart.style.bottom="-40px";
 
-    transition:.3s;
+        heart.style.fontSize=(18+Math.random()*18)+"px";
 
-}
+        heart.style.animation="floatHeart 8s linear forwards";
 
-#beginBtn:hover{
+        heart.style.pointerEvents="none";
 
-    transform:scale(1.08);
+        document.body.appendChild(heart);
 
-}
+        setTimeout(()=>heart.remove(),8000);
 
-/* =======================================
-   MAIN
-======================================= */
-
-#mainContent{
-
-    display:none;
-
-    justify-content:center;
-
-    padding:40px 20px;
+    },500);
 
 }
 
-.container{
+// =====================================
+// Cherry Blossoms
+// =====================================
 
-    width:95%;
+function startPetals(){
 
-    max-width:850px;
+    setInterval(()=>{
 
-    background:rgba(255,255,255,.18);
+        const petal=document.createElement("div");
 
-    backdrop-filter:blur(18px);
+        petal.innerHTML="🌸";
 
-    border-radius:30px;
+        petal.style.position="fixed";
 
-    padding:35px;
+        petal.style.left=Math.random()*100+"vw";
 
-    text-align:center;
+        petal.style.top="-40px";
 
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
+        petal.style.fontSize=(18+Math.random()*15)+"px";
 
-}
+        petal.style.animation="petalFall 9s linear forwards";
 
-.container h1{
+        petal.style.pointerEvents="none";
 
-    font-size:42px;
+        document.body.appendChild(petal);
 
-}
+        setTimeout(()=>petal.remove(),9000);
 
-/* =======================================
-   HERO PHOTO
-======================================= */
-
-.hero-photo{
-
-    margin:25px 0;
+    },600);
 
 }
 
-.hero-photo img{
+// =====================================
+// NO Button Runs Away
+// =====================================
 
-    width:100%;
+let yesScale=1;
 
-    height:380px;
+function moveNo(){
 
-    object-fit:cover;
+    const x=Math.random()*(window.innerWidth-170);
 
-    border-radius:22px;
+    const y=Math.random()*(window.innerHeight-80);
 
-    transition:.4s;
+    noBtn.style.position="fixed";
 
-}
+    noBtn.style.left=x+"px";
 
-.hero-photo img:hover{
+    noBtn.style.top=y+"px";
 
-    transform:scale(1.02);
+    yesScale+=0.08;
 
-}
-
-/* =======================================
-   GALLERY
-======================================= */
-
-.gallery{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:15px;
-
-    margin:25px 0;
+    yesBtn.style.transform=`scale(${yesScale})`;
 
 }
 
-.gallery img{
+noBtn.addEventListener("mouseenter",moveNo);
 
-    width:100%;
+noBtn.addEventListener("click",moveNo);
 
-    height:220px;
+// =====================================
+// YES Button
+// =====================================
 
-    object-fit:cover;
+yesBtn.addEventListener("click",()=>{
 
-    border-radius:18px;
+    celebrate();
 
-    transition:.35s;
+    setTimeout(()=>{
 
-}
+        window.location.href="yes.html";
 
-.gallery img:hover{
+    },2500);
 
-    transform:scale(1.04);
+});
 
-}
+// =====================================
+// Fireworks
+// =====================================
 
-/* =======================================
-   LETTER
-======================================= */
+function celebrate(){
 
-#letter{
+    const end=Date.now()+2500;
 
-    margin-top:30px;
+    (function frame(){
 
-    line-height:2;
+        confetti({
 
-    min-height:180px;
+            particleCount:10,
 
-    font-size:18px;
+            spread:80,
 
-}
+            origin:{
+                x:Math.random(),
+                y:Math.random()*0.6
+            }
 
-/* =======================================
-   BUTTONS
-======================================= */
+        });
 
-.proposal{
+        if(Date.now()<end){
 
-    margin-top:40px;
+            requestAnimationFrame(frame);
 
-}
+        }
 
-.buttons{
-
-    margin-top:20px;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-}
-
-.buttons button{
-
-    border:none;
-
-    padding:16px 38px;
-
-    border-radius:40px;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-}
-
-#yesBtn{
-
-    background:#ff2e63;
-
-    color:white;
-
-    box-shadow:0 0 25px rgba(255,46,99,.6);
-
-    animation:pulse 2s infinite;
-
-}
-
-#noBtn{
-
-    background:white;
-
-    color:#ff2e63;
-
-}
-
-@keyframes pulse{
-
-0%,100%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.08);
-
-}
-
-}
-
-/* =======================================
-   FLOATING HEARTS
-======================================= */
-
-#hearts,
-#petals{
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-overflow:hidden;
-
-}
-
-/* =======================================
-   MOBILE
-======================================= */
-
-@media(max-width:768px){
-
-.container h1{
-
-font-size:32px;
-
-}
-
-.hero-photo img{
-
-height:260px;
-
-}
-
-.gallery{
-
-grid-template-columns:1fr;
-
-}
-
-.gallery img{
-
-height:250px;
-
-}
-
-.buttons{
-
-flex-direction:column;
-
-align-items:center;
-
-}
+    })();
 
 }
