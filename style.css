@@ -204,3 +204,140 @@ font-size:30px;
 }
 
 }
+/* ========================= */
+/* Floating Hearts           */
+/* ========================= */
+
+.floatingHeart{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    z-index:1;
+    animation:floatHeart linear forwards;
+}
+
+@keyframes floatHeart{
+
+    from{
+        transform:translateY(0) scale(.8);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) scale(1.4) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+/* ========================= */
+/* Cherry Blossoms           */
+/* ========================= */
+
+.petal{
+    position:fixed;
+    top:-60px;
+    pointer-events:none;
+    z-index:2;
+    animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+
+    from{
+        transform:translateY(-50px) translateX(0) rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) translateX(80px) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+/* ========================= */
+/* Heart Cursor              */
+/* ========================= */
+
+.cursorHeart{
+    position:fixed;
+    pointer-events:none;
+    z-index:99999;
+    animation:cursorFade .9s linear forwards;
+}
+
+@keyframes cursorFade{
+
+    from{
+        transform:translate(-50%,-50%) scale(1);
+        opacity:1;
+    }
+
+    to{
+        transform:translate(-50%,-90%) scale(.2);
+        opacity:0;
+    }
+
+}
+
+/* ========================= */
+/* Heart Rain                */
+/* ========================= */
+
+.heartRain{
+    position:fixed;
+    top:-60px;
+    pointer-events:none;
+    z-index:999999;
+    animation:heartRain 5s linear forwards;
+}
+
+@keyframes heartRain{
+
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+
+}
+
+/* ========================= */
+/* Smooth Fade               */
+/* ========================= */
+
+.glass{
+    animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ========================= */
+/* Image Hover               */
+/* ========================= */
+
+.gallery img:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 35px rgba(255,90,160,.8);
+}
