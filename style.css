@@ -361,3 +361,82 @@ align-items:center;
 }
 
 }
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) scale(.8);
+opacity:0;
+}
+
+15%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg) scale(1.3);
+opacity:0;
+}
+
+}
+
+/* =========================================
+   CHERRY BLOSSOMS
+========================================= */
+
+@keyframes petalFall{
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) translateX(120px) rotate(720deg);
+opacity:0;
+}
+
+}
+
+/* =========================================
+   PHOTO HOVER
+========================================= */
+
+.hero-photo img,
+.gallery img{
+
+cursor:pointer;
+
+}
+
+.hero-photo img:hover,
+.gallery img:hover{
+
+box-shadow:0 15px 35px rgba(255,80,150,.35);
+
+}
+
+/* =========================================
+   YES BUTTON
+========================================= */
+
+#yesBtn:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 35px rgba(255,46,99,.8);
+
+}
+
+/* =========================================
+   NO BUTTON
+========================================= */
+
+#noBtn{
+
+transition:.25s;
+
+}
