@@ -267,3 +267,30 @@ button{
     }
 
 }
+/* YES button grows smoothly */
+#yesBtn{
+    transition:0.3s;
+}
+
+/* Falling hearts */
+.heartRain{
+    position:fixed;
+    top:-60px;
+    pointer-events:none;
+    z-index:9999;
+    animation:heartFall linear forwards;
+}
+
+@keyframes heartFall{
+
+    from{
+        transform:translateY(-60px) rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+
+}
